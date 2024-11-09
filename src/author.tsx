@@ -1,25 +1,28 @@
 import React from 'react';
 import { useForth } from 'lib/use-forth';
+import { useBetween } from 'lib/use-between';
+import { useNavigate } from 'react-router-dom';
 
-const Component = () => {
-    const value = useForth(() => {
-        // You can async do whatever you want here
-        return new Promise<number>((resolve) => {
-            let value = 0;
+const _useSharedCounter = () => {
+    const [value, setValue] = React.useState(0);
 
-            for (;value < 3; value = Math.random() * 10) {}
+    const increase = React.useCallback(() => {
+        setValue(value + 1);
+    }, [value, setValue]);
 
-            resolve(value);
-        });
-    });
-
-    return (
-        <div>Should be more than 3: {value}</div>
-    );
+    return { value, increase };
 };
 
+export const useSharedCounter = () => useBetween(_useSharedCounter);
+
 export default () => {
+    const { value } = useSharedCounter();
+    const navigate = useNavigate();
+
     return (
-        <div>My name is Alex <Component /></div>
+        <>
+            <div>My name is Alex and value is {value}</div>
+            <div onClick={() => navigate('/')}>Click to go to main page</div>
+        </>
     );
 };

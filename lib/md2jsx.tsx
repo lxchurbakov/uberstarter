@@ -5,13 +5,23 @@ export const inlines = (md: string) => {
         .replaceAll(/\`([^\`]+)\`/gi, '<pre>$1</pre>');
 };
 
-export const convert = (md: string, { Text }) => {
+export const convert = (md: string, { Text, tags }) => {
     let code = null as string | null;
 
     return md.split('\n').map((line, index) => {
         // if (!line) {
         //     return null;
         // }
+
+        if (line.startsWith('%')) {
+            const tag = line.slice(1);
+
+            if (!tags[tag]) {
+                return `Tag not found: ${tag}`;
+            }
+
+            return (<div key={index}>{tags[tag]}</div>);
+        }
 
         if (line === '```') {
             if (code === null) {

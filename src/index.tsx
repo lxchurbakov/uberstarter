@@ -6,8 +6,8 @@ import Author from './author';
 export default () => {
     return (
         <Routes>
-            <Route path='/author' element={<Author />} />
             <Route path='/' element={<Readme />} />
+            <Route path='/author' element={<Author />} />
             <Route path='*' element={<div>404 not found</div>} />
         </Routes>
     );
