@@ -9,4 +9,5 @@ export default {
     lib: path.resolve(ROOT, './lib'),
     dist: path.resolve(ROOT, './dist'),
     static: path.resolve(ROOT, './dist/static'),
+    assets: path.resolve(ROOT, './assets'),
 };

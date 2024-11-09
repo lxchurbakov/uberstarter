@@ -21,6 +21,7 @@ app.use(express.json());
 app.use('/', serverMiddleware);
 
 app.use(express.static(paths.static));
+app.use(express.static(paths.assets));
 
 app.get('*', (req, res) => {
     const sheet = new ServerStyleSheet();
