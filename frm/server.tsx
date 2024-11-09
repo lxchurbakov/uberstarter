@@ -1,10 +1,20 @@
+import 'dotenv/config';
+
 import React from 'react';
 import express from 'express';
 import { renderToPipeableStream } from 'react-dom/server';
 
+import Application from '@/index';
+
+import paths from 'frm/paths';
+
 const app = express();
 
 app.use(express.json());
+
+// app.use('/server', serverMiddleware);
+
+app.use(express.static(paths.static));
 
 app.get('*', (req, res) => {
     // const sheet = new ServerStyleSheet();
@@ -12,7 +22,8 @@ app.get('*', (req, res) => {
 
     const stream = renderToPipeableStream((
         <div id="app">
-            It works
+            {/* {sheet.collectStyles(<Application  />)} */}
+            <Application />
         </div>
     ), {
         onShellReady() {
@@ -41,6 +52,6 @@ app.get('*', (req, res) => {
     });
 });
 
-app.listen(9000, () => {
-    // console.log(`Server is up at ${process.env.PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server is up at ${process.env.PORT}`);
 });

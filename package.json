@@ -3,7 +3,13 @@
   "description": "",
   "version": "1.0.0",
   "scripts": {
-    "server:dev": "npx tsx watch -r tsconfig-paths/register frm/server.tsx"
+    "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/frm/server.js",
+    "dev": "npx run-p server:dev client:dev",
+    "build": "NODE_ENV=production npx run-p client:build server:build",
+    "server:build": "npx tsc",
+    "server:dev": "npx tsx watch -r tsconfig-paths/register frm/server.tsx",
+    "client:build": "npx webpack --config frm/webpack.config.ts",
+    "client:dev": "npx webpack --watch --config frm/webpack.config.ts"
   },
   "keywords": [
     "react",
@@ -12,14 +18,21 @@
   "author": "lxchurbakov",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "npm-run-all": "^4.1.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.1"
   }
 }
