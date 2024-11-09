@@ -10,7 +10,7 @@ export default {
         extensions: ['.js', '.ts', '.tsx'],
         alias: {
             '@': paths.src,
-            // 'lib': paths.lib,
+            'lib': paths.lib,
             'frm': paths.frm,
         },
     },
