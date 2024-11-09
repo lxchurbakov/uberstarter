@@ -3,7 +3,7 @@ import { hydrateRoot } from 'react-dom/client';
 
 import Application from '@/index';
 import { Forth, ForthCache } from 'lib/use-forth';
-// import { Router } from 'lib/router';
+import { BrowserRouter } from 'react-router-dom';
 
 const app = document.getElementById('app');
 
@@ -18,10 +18,9 @@ if (!cacheNode) {
 }
 
 const root = hydrateRoot(app, (
-    <Forth mode="client" cache={ForthCache.parse(cacheNode.innerText)}>
-        <Application />
-    </Forth>
+    <BrowserRouter>
+        <Forth mode="client" cache={ForthCache.parse(cacheNode.innerText)}>
+            <Application />
+        </Forth>
+    </BrowserRouter>
 ));
-
-//     {/* <Router history={history}> */}
-//     {/* </Router> */}

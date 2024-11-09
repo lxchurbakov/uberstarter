@@ -1,19 +1,20 @@
 import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import paths from 'frm/paths';
 
-
-// import session from './session/router';
-// import { build_router } from 'lib/buffalo';
 import { route } from 'lib/express-utils';
 
-// import './profile/router';
-
-const router = new express.Router();
-
-// router.use('/buffalo', build_router(express));
-// router.use('/api/v1/session', session);
+const router = express.Router();
 
 router.get('/api/v1/ping', route(async (req) => {
     return 'pong';
+}));
+
+router.get('/api/v1/readme', route(async (req) => {
+    return new Promise((resolve, reject) => 
+        fs.readFile(path.resolve(paths.root, './readme.md'), (err, data) => err ? reject(err) : resolve(data.toString()))
+    );
 }));
 
 /* handle HTTP ERRORS thrown by lib/express-utils */

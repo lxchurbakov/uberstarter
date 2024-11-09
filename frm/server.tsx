@@ -3,7 +3,9 @@ import 'dotenv/config';
 import React from 'react';
 import express from 'express';
 import { Helmet } from 'react-helmet';
+import { ServerStyleSheet } from 'styled-components';
 import { renderToPipeableStream } from 'react-dom/server';
+import { StaticRouter } from "react-router-dom/server";
 
 import Application from '@/index';
 import serverMiddleware from '@/server';
@@ -21,15 +23,16 @@ app.use('/', serverMiddleware);
 app.use(express.static(paths.static));
 
 app.get('*', (req, res) => {
-    // const sheet = new ServerStyleSheet();
+    const sheet = new ServerStyleSheet();
     const cache = new ForthCache();
 
     const stream = renderToPipeableStream((
         <div id="app">
-            <Forth mode="server" cache={cache}>
-            {/* {sheet.collectStyles(<Application  />)} */}
-                <Application />
-            </Forth>
+            <StaticRouter location={req.url}>
+                <Forth mode="server" cache={cache}>
+                    {sheet.collectStyles(<Application  />)}
+                </Forth>
+            </StaticRouter>
         </div>
     ), {
         onShellReady() {
@@ -46,12 +49,12 @@ app.get('*', (req, res) => {
             res.write("<meta charSet='utf-8' />");
             res.write('</head>');
 
-            // const styleTags = sheet.getStyleTags();
-            // sheet.seal();
+            const styleTags = sheet.getStyleTags();
+            sheet.seal();
 
             stream.pipe(res);
             
-            // res.write(styleTags);
+            res.write(styleTags);
             res.write(`<script nonce id="storage" type="application/json">${cache.stringify()}</script>`);
             res.write('<script src="/client.js"></script>');            
         },

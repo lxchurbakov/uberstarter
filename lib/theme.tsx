@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const font = {
-    family: 'Rubik, sans',
+    family: '"Host Grotesk", sans-serif',
     size: '18px',
 };
 
@@ -22,5 +22,8 @@ export const colors = {
 export const helmet = [
     <link key="preload-0" rel="preconnect" href="https://fonts.googleapis.com" />,
     <link key="preload-1" rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />,
-    <link key="font" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+    // <link key="font" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+    // <link rel="preconnect" href="https://fonts.googleapis.com">
+    // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link key="preload-2" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet"></link>
 ];
