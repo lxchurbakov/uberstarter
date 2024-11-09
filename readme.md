@@ -4,7 +4,7 @@ This is a Fullstack React Application starter that I really like.
 
 ## Typescript
 
->
+It uses Typescript and JSX for both server and client side. The client is built using webpack, server is built using ts compiler.
 
 ## Styling
 
