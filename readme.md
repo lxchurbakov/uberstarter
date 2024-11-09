@@ -53,41 +53,17 @@ This applications uses it's own version of `use-between` that you can find in `l
 
 ## Fetchup
 
->
-
 ## Envs
-
->
 
 ## Dockerfile
 
->
-
 ## Redis
-
->
 
 ## Postgres
 
->
-
 ## S3
 
->
-
-
-
-
-
 ## FAQ
-
-### How to update Font
-
->
-
-### How to opt out Use Between
-
->
 
 ### Why custom use-between?
 
