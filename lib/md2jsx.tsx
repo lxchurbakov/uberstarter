@@ -6,8 +6,26 @@ export const inlines = (md: string) => {
 };
 
 export const convert = (md: string, { Text }) => {
+    let code = null as string | null;
+
     return md.split('\n').map((line, index) => {
-        if (!line) {
+        // if (!line) {
+        //     return null;
+        // }
+
+        if (line === '```') {
+            if (code === null) {
+                code = '';
+                return null;
+            } else {
+                let result = <Text style={{ background: '#dedede', padding: '12px', borderRadius: '4px' }}key={index}><pre>{code}</pre></Text>
+                code = null;
+                return result;
+            }
+        }
+
+        if (code !== null) {
+            code = [code, line].join('\n');
             return null;
         }
 
@@ -29,8 +47,8 @@ export const convert = (md: string, { Text }) => {
             );
         }
 
-        return <Text mw="600px" key={index} size="18px" weight="400" dangerouslySetInnerHTML={{ __html: inlines(line) }} />
-            // {inlines(line)}
-        // </Text>;
-    }).filter(Boolean);
+        return (
+            <Text mw="600px" key={index} size="18px" weight="400" mb="12px" dangerouslySetInnerHTML={{ __html: inlines(line) }} />
+        );
+    }).filter(($) => $ !== null);
 };

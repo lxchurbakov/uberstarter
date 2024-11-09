@@ -14,6 +14,25 @@ For styling it's using `styled-components`. If you want to opt out, remove `Serv
 
 Server Side Rendering works out of the box. To fetch data you can use `useForth` which is an replacement of `use` that accepts a `() => Promise`. Resolved data will be rendered on SSR as well as transferred to FE and put in state on hydration stage.
 
+```
+const Component = () => {
+    const value = useForth(() => {
+        // You can async do whatever you want here
+        return new Promise<number>((resolve) => {
+            let value = 0;
+
+            for (;value < 3; value = Math.random() * 10) {}
+
+            resolve(value);
+        });
+    });
+
+    return (
+        <div>Should be more than 3: {value}</div>
+    );
+};
+```
+
 ## Routing
 
 It uses `react-router` with Browser Router on FE and Static Router on SSR. If you want to opt out, just update `frm/client.tsx` and `frm/server.tsx`. Actual routes can be found in `src/index.tsx`.

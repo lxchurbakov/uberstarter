@@ -8,7 +8,7 @@ export default () => {
         <Routes>
             <Route path='/author' element={<Author />} />
             <Route path='/' element={<Readme />} />
-            <Route path='*' element={<div>404 not </div>} />
+            <Route path='*' element={<div>404 not found</div>} />
         </Routes>
     );
 };
