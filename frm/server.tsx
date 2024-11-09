@@ -5,6 +5,7 @@ import express from 'express';
 import { renderToPipeableStream } from 'react-dom/server';
 
 import Application from '@/index';
+import serverMiddleware from '@/server';
 
 import paths from 'frm/paths';
 
@@ -12,7 +13,7 @@ const app = express();
 
 app.use(express.json());
 
-// app.use('/server', serverMiddleware);
+app.use('/', serverMiddleware);
 
 app.use(express.static(paths.static));
 
