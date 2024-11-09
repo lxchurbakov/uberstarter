@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "es2015",
+        "strictNullChecks": true,
+        "esModuleInterop": true,
+        "jsx": "react",
+        "lib": [
+            "es2016",
+            "dom"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "typeRoots": [
+            "node_modules/@types",
+            "./types"
+        ],
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "frm/*": [
+                "./frm/*"
+            ]
+        }
+    }
+}

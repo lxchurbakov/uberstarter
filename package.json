@@ -1,0 +1,20 @@
+{
+  "name": "uberstarter",
+  "description": "",
+  "version": "1.0.0",
+  "scripts": {
+    "server:dev": "npx tsx watch -r tsconfig-paths/register frm/server.tsx"
+  },
+  "keywords": [
+    "react",
+    "starter"
+  ],
+  "author": "lxchurbakov",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.2"
+  }
+}

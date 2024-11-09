@@ -41,3 +41,7 @@ This is a Fullstack React Application starter that I really like.
 ## State management
 
 >
+
+## Envs
+
+>
