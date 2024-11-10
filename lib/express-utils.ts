@@ -9,3 +9,11 @@ export class HttpError extends Error {
         super(...args);
     }
 };
+
+export const catchErrors = (err, _req, res, _next) => {
+    if (!!err.statusCode) {
+        res.status(err.statusCode).json(err.body || null);
+    } else {
+        res.status(500).send(err.toString());
+    }
+};

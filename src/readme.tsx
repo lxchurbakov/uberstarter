@@ -45,8 +45,9 @@ const Link = styled.a`
 
 export default () => {
     const navigate = useNavigate();
+    
     const readme = useForth(() => 
-        fetch('http://localhost:8000/api/v1/readme').then((r) => r.json())
+        fetch(process.env.SELF_URL + '/api/v1/readme').then((r) => r.json())
     );
 
     const { value, increase } = useSharedCounter();
@@ -63,8 +64,6 @@ export default () => {
 
         return readme ? convert(readme, { Text, tags }) : '';
     }, [readme, value]);
-
-    
 
     return (
         <>

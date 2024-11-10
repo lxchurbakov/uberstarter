@@ -1,5 +1,4 @@
 import React from 'react';
-import { useForth } from 'lib/use-forth';
 import { useBetween } from 'lib/use-between';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +16,7 @@ export const useSharedCounter = () => useBetween(_useSharedCounter);
 
 export default () => {
     const { value } = useSharedCounter();
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
 
     return (
         <>

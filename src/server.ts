@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import paths from 'frm/paths';
 
-import { route } from 'lib/express-utils';
+import { route, catchErrors } from 'lib/express-utils';
 
 const router = express.Router();
 
@@ -17,14 +17,6 @@ router.get('/api/v1/readme', route(async (req) => {
     );
 }));
 
-/* handle HTTP ERRORS thrown by lib/express-utils */
-
-router.use((err, _req, res, _next) => {
-    if (!!err.statusCode) {
-        res.status(err.statusCode).json(err.body || null);
-    } else {
-        res.status(500).send(err.toString());
-    }
-});
+router.use(catchErrors);
 
 export default router;

@@ -51,8 +51,6 @@ This applications uses it's own version of `use-between` that you can find in `l
 
 %shared-counter
 
-## Fetchup
-
 ## Envs
 
 ## Dockerfile
