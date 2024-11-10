@@ -1,6 +1,6 @@
 # Uberstarter
 
-This is a Fullstack React Application Starter that I really like and use for half of my pet projects. It's minimalistic and easily modifiable.
+This is a Fullstack React Application Starter that I really like and use for half of my pet projects. It's minimalistic and easily modifiable. It only has 350ish lines of code (not counting example pages and md2jsx).
 
 ## Typescript
 
