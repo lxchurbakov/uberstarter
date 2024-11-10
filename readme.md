@@ -60,8 +60,3 @@ This applications uses it's own version of `use-between` that you can find in `l
 ## Postgres
 
 ## S3
-
-## FAQ
-
-### Why custom use-between?
-

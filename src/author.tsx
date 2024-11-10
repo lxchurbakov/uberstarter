@@ -1,5 +1,5 @@
 import React from 'react';
-import { useBetween } from 'lib/use-between';
+import { useBetween } from 'use-between';
 import { useNavigate } from 'react-router-dom';
 
 const _useSharedCounter = () => {
