@@ -6,8 +6,8 @@ import * as theme from 'lib/theme';
 import { useForth } from 'lib/use-forth';
 import { convert } from 'lib/md2jsx';
 
-import { useSharedCounter } from './author';
-import { useNavigate } from 'react-router-dom';
+// import { useSharedCounter } from './author';
+// import { useNavigate } from 'react-router-dom';
 
 const Base = styled.div<{ mb?: string, mt?: string, mw?: string }>`
     margin-bottom: ${props => props.mb ?? 0};
@@ -44,26 +44,17 @@ const Link = styled.a`
 `;
 
 export default () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     
     const readme = useForth(() => 
         fetch(process.env.SELF_URL + '/api/v1/readme').then((r) => r.json())
     );
 
-    const { value, increase } = useSharedCounter();
+    // const { value, increase } = useSharedCounter();
 
     const content = React.useMemo(() => {
-        const tags = {
-            'shared-counter': (
-                <>
-                    <Text onClick={increase}>Value is {value}. Click to increase</Text>
-                    <Text onClick={() => navigate('/author')}>Go to author page</Text>
-                </>
-            ),
-        };
-
-        return readme ? convert(readme, { Text, tags }) : '';
-    }, [readme, value]);
+        return readme ? convert(readme, { Text }) : '';
+    }, [readme]);
 
     return (
         <>

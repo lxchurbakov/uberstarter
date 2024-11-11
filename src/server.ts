@@ -4,6 +4,7 @@ import path from 'path';
 import paths from 'frm/paths';
 
 import { route, catchErrors } from 'lib/express-utils';
+import s3router from './examples/s3/router';
 
 const router = express.Router();
 
@@ -16,6 +17,8 @@ router.get('/api/v1/readme', route(async (req) => {
         fs.readFile(path.resolve(paths.root, './readme.md'), (err, data) => err ? reject(err) : resolve(data.toString()))
     );
 }));
+
+router.use(s3router);
 
 router.use(catchErrors);
 

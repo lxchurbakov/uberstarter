@@ -49,14 +49,14 @@ All the static files your application imports in code will be bundled with webpa
 
 This applications uses it's own version of `use-between` that you can find in `lib/use-between`. It let's you wrap any hook you have and make it `shared` accross multiple components. If you want to opt out, just remove `lib/use-between`. If you want to learn more, just check out an example in `src/author.tsx`.
 
-%shared-counter
+## Postgres
 
-## Envs
-
-## Dockerfile
+>
 
 ## Redis
 
-## Postgres
+>
 
 ## S3
+
+>
