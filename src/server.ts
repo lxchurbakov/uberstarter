@@ -6,6 +6,7 @@ import paths from 'frm/paths';
 import { route, catchErrors } from 'lib/express-utils';
 import s3router from './examples/s3/router';
 import postgresRouter from './examples/postgres/router';
+import redisRouter from './examples/redis/router'
 
 const router = express.Router();
 
@@ -21,6 +22,7 @@ router.get('/api/v1/readme', route(async (req) => {
 
 router.use(s3router);
 router.use(postgresRouter);
+router.use(redisRouter);
 
 router.use(catchErrors);
 
